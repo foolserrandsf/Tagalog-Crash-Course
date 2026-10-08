@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tagalog in 4 Hours</title>
+<meta name="description" content="A practical, Taglish-first crash course: sentence frames, one verb shortcut, and drills that check your answers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbf7ef; --card:#ffffff; --ink:#1d1a16; --muted:#6b645a; --line:#e7dfd1;
+  --accent:#c2410c; --accent-soft:#fde7d9; --good:#15803d; --good-soft:#dcfce7;
+  --bad:#b91c1c; --bad-soft:#fee2e2; --tl:#1e3a8a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#16130f; --card:#1f1b16; --ink:#f3ede3; --muted:#a59c8f; --line:#352e26;
+    --accent:#fb923c; --accent-soft:#3b2414; --good:#4ade80; --good-soft:#12301d;
+    --bad:#f87171; --bad-soft:#3a1717; --tl:#93c5fd;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#16130f; --card:#1f1b16; --ink:#f3ede3; --muted:#a59c8f; --line:#352e26;
+  --accent:#fb923c; --accent-soft:#3b2414; --good:#4ade80; --good-soft:#12301d;
+  --bad:#f87171; --bad-soft:#3a1717; --tl:#93c5fd;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:24px 16px 80px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.15;margin:0 0 .4em}
+h1{font-size:clamp(2rem,6vw,3rem);font-weight:800}
+h2{font-size:1.6rem}
+h3{font-size:1.15rem}
+.lede{color:var(--muted);margin:0 0 1rem}
+nav.steps{display:flex;gap:6px;flex-wrap:wrap;margin:20px 0 28px;position:sticky;top:0;background:var(--bg);padding:10px 0;z-index:5;border-bottom:1px solid var(--line)}
+nav.steps button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 12px;font:inherit;font-size:.85rem;cursor:pointer}
+nav.steps button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+nav.steps button.done::after{content:" ✓"}
+section{display:none}
+section.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:0 0 16px}
+.tag{display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.tl{color:var(--tl);font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.tablewrap{overflow-x:auto}
+ul{padding-left:1.2em}
+li{margin:.25em 0}
+.drill{margin:14px 0}
+.drill label{display:block;font-weight:500;margin-bottom:6px}
+.row{display:flex;gap:8px}
+input[type=text],textarea{flex:1;width:100%;font:inherit;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+textarea{min-height:44px;resize:vertical}
+button.btn{font:inherit;font-weight:600;border:0;border-radius:10px;padding:10px 14px;background:var(--accent);color:#fff;cursor:pointer;white-space:nowrap}
+button.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+.fb{margin-top:8px;padding:10px 12px;border-radius:10px;font-size:.95rem;display:none}
+.fb.ok{display:block;background:var(--good-soft);color:var(--good)}
+.fb.no{display:block;background:var(--bad-soft);color:var(--bad)}
+.fb.hint{display:block;background:var(--accent-soft);color:var(--ink)}
+.navbtns{display:flex;justify-content:space-between;gap:8px;margin-top:24px}
+.big{font-size:1.25rem}
+.sentence{display:grid;grid-template-columns:28px 1fr;gap:8px;margin:10px 0;align-items:start}
+.sentence .n{color:var(--muted);font-weight:600;padding-top:10px;text-align:right}
+.sentence .pair{display:grid;gap:6px}
+footer{color:var(--muted);font-size:.85rem;margin-top:40px;text-align:center}
+.speak{border:0;background:none;cursor:pointer;font-size:1rem;padding:0 4px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="tag">4-hour crash course</span>
+    <h1>Tagalog, functional, fast.</h1>
+    <p class="lede">Frames, not vocabulary. Taglish, not textbook. Every step ends with a drill that checks your answer.</p>
+  </header>
+
+  <nav class="steps" id="nav"></nav>
+
+  <!-- PLAN -->
+  <section data-step="plan" data-label="Plan">
+    <div class="card">
+      <span class="tag">Learn first</span>
+      <h3>Sentence frames</h3>
+      <p>Tagalog runs on a handful of reusable shells: <span class="tl">Gusto ko ng ___</span> (I want ___), <span class="tl">May ___ ba?</span> (Is there ___?), <span class="tl">Nag-___ ako</span> (I ___-ed). Real Filipinos speak <b>Taglish</b>, which drops English words straight into Tagalog frames. Own about 10 frames and English fills the blanks.</p>
+    </div>
+    <div class="card">
+      <span class="tag">Ignore completely</span>
+      <ul>
+        <li><b>Verb "focus" theory</b> (actor vs. object focus, the full affix system). You'll use one verb shortcut instead.</li>
+        <li><b>Tagalog numbers above 10.</b> Prices, time and addresses are usually said in English or Spanish-derived numbers.</li>
+        <li><b>"Pure" vocabulary.</b> Nobody says <i>salumpuwit</i> for chair. They say <span class="tl">upuan</span>, or just "chair."</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tag">The one exercise</span>
+      <p>Write 15 sentences you actually say on a normal day. Rebuild each in a Tagalog frame, keeping the English nouns and verbs. Say all 15 aloud to a Filipino speaker, or record them and compare against a Taglish vlog. It's the last step in this app, and it saves as you type.</p>
+    </div>
+  </section>
+
+  <!-- STEP 1 -->
+  <section data-step="s1" data-label="1 · Flip">
+    <span class="tag">Step 1</span>
+    <h2>Flip the sentence</h2>
+    <p>English puts the person first: <i>"I am tired."</i> Tagalog puts the <b>description or action first</b>, then the person: <i>"Tired I."</i></p>
+    <div class="card tablewrap">
+      <table>
+        <tr><th>Tagalog</th><th>Literally</th><th>Means</th></tr>
+        <tr><td class="tl">Pagod ako.</td><td>Tired I</td><td>I'm tired.</td></tr>
+        <tr><td class="tl">Gutom ka?</td><td>Hungry you?</td><td>Are you hungry?</td></tr>
+        <tr><td class="tl">Busy siya.</td><td>Busy he/she</td><td>He/she is busy.</td></tr>
+        <tr><td class="tl">Okay lang ako.</td><td>Okay just I</td><td>I'm just fine.</td></tr>
+      </table>
+    </div>
+    <div class="card tablewrap">
+      <h3>Pronouns</h3>
+      <table>
+        <tr><td class="tl">ako</td><td>I</td><td class="tl">kami</td><td>we (not you)</td></tr>
+        <tr><td class="tl">ka</td><td>you</td><td class="tl">tayo</td><td>we (including you)</td></tr>
+        <tr><td class="tl">siya</td><td>he / she</td><td class="tl">sila</td><td>they</td></tr>
+        <tr><td class="tl">kayo</td><td colspan="3">you (plural, or polite to one older person)</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Two small words</h3>
+      <p><span class="tl">po</span> shows respect to elders, strangers and customers. It goes right after the first word: <span class="tl">Pagod po ako.</span></p>
+      <p><span class="tl">ba</span> marks a yes/no question, same spot: <span class="tl">Gutom ka ba?</span></p>
+      <p>Words: <span class="tl">masaya</span> happy · <span class="tl">gutom</span> hungry · <span class="tl">pagod</span> tired · <span class="tl">handa</span> ready · plus any English adjective.</p>
+    </div>
+    <h3>Drill</h3>
+    <div class="drills" data-drills="s1"></div>
+  </section>
+
+  <!-- STEP 2 -->
+  <section data-step="s2" data-label="2 · Verbs">
+    <span class="tag">Step 2</span>
+    <h2>The verb shortcut: <span class="tl">mag-</span> + any English verb</h2>
+    <p>Skip the affix system. Stick <span class="tl">mag-</span> on an English verb and change the front to show time. Person still goes after.</p>
+    <div class="card tablewrap">
+      <table>
+        <tr><th>Time</th><th>Pattern</th><th>Example</th><th>Means</th></tr>
+        <tr><td>Base / "to"</td><td class="tl">mag-</td><td class="tl">Gusto kong mag-drive.</td><td>I want to drive.</td></tr>
+        <tr><td>Done (past)</td><td class="tl">nag-</td><td class="tl">Nag-text ako.</td><td>I texted.</td></tr>
+        <tr><td>Doing (now / habit)</td><td class="tl">nag- + 1st syllable doubled</td><td class="tl">Nagwo-work ako.</td><td>I'm working.</td></tr>
+        <tr><td>Will do (future)</td><td class="tl">mag- + 1st syllable doubled</td><td class="tl">Magco-cook ako mamaya.</td><td>I'll cook later.</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>The doubling trick</h3>
+      <p>Take the first consonant + vowel <i>sound</i> of the English verb and repeat it: <b>work</b> → <span class="tl">wo-work</span> · <b>drive</b> → <span class="tl">da-drive</span> · <b>text</b> → <span class="tl">te-text</span> · <b>cook</b> → <span class="tl">co-cook</span>. Spelling is loose; people write it how it sounds.</p>
+      <p>Time words: <span class="tl">kanina</span> earlier today · <span class="tl">kahapon</span> yesterday · <span class="tl">mamaya</span> later today · <span class="tl">bukas</span> tomorrow · <span class="tl">ngayon</span> now.</p>
+    </div>
+    <h3>Drill</h3>
+    <div class="drills" data-drills="s2"></div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section data-step="s3" data-label="3 · Frames">
+    <span class="tag">Step 3</span>
+    <h2>Ten frames that cover most of a day</h2>
+    <p>Learn these as chunks. Don't analyze them; swap the blank.</p>
+    <div class="card tablewrap">
+      <table>
+        <tr><th>Frame</th><th>Means</th><th>Example</th></tr>
+        <tr><td class="tl">Gusto ko ng ___.</td><td>I want (a thing)</td><td class="tl">Gusto ko ng coffee.</td></tr>
+        <tr><td class="tl">Gusto kong mag-___.</td><td>I want to (do)</td><td class="tl">Gusto kong mag-rest.</td></tr>
+        <tr><td class="tl">Kailangan ko ng ___.</td><td>I need (a thing)</td><td class="tl">Kailangan ko ng tubig.</td></tr>
+        <tr><td class="tl">May ___ ba?</td><td>Is there / do you have ___?</td><td class="tl">May wifi ba?</td></tr>
+        <tr><td class="tl">Wala.</td><td>There's none / no</td><td class="tl">Wala akong cash.</td></tr>
+        <tr><td class="tl">Saan ang ___?</td><td>Where is ___?</td><td class="tl">Saan ang CR?</td></tr>
+        <tr><td class="tl">Magkano ___?</td><td>How much is ___?</td><td class="tl">Magkano ito?</td></tr>
+        <tr><td class="tl">Pwede bang ___?</td><td>Can I / is it okay to ___?</td><td class="tl">Pwede bang mag-order?</td></tr>
+        <tr><td class="tl">Paki-___.</td><td>Please (do) ___</td><td class="tl">Paki-ulit. (Please repeat.)</td></tr>
+        <tr><td class="tl">Ano ang ___?</td><td>What is ___?</td><td class="tl">Ano ang pangalan mo?</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Survival lines</h3>
+      <p><span class="tl">Salamat po.</span> Thank you · <span class="tl">Hindi ko alam.</span> I don't know · <span class="tl">Hindi ko gets.</span> I don't get it · <span class="tl">Dahan-dahan lang po.</span> Slowly please · <span class="tl">Oo / Opo</span> yes / yes (polite) · <span class="tl">Hindi po</span> no (polite)</p>
+      <p><span class="tl">CR</span> ("comfort room") is the everyday word for restroom.</p>
+    </div>
+    <h3>Drill</h3>
+    <div class="drills" data-drills="s3"></div>
+  </section>
+
+  <!-- STEP 4 -->
+  <section data-step="s4" data-label="4 · No">
+    <span class="tag">Step 4</span>
+    <h2>Saying no: <span class="tl">hindi</span>, <span class="tl">wala</span>, <span class="tl">ayaw</span></h2>
+    <p>Three "no" words, each for a different job. The one rule: <b>the pronoun jumps forward, right after the no-word.</b></p>
+    <div class="card tablewrap">
+      <table>
+        <tr><th>Word</th><th>Use for</th><th>Positive</th><th>Negative</th></tr>
+        <tr><td class="tl">hindi</td><td>not (describing / doing)</td><td class="tl">Pagod ako.</td><td class="tl">Hindi ako pagod.</td></tr>
+        <tr><td class="tl">wala</td><td>don't have / there isn't</td><td class="tl">May time ako.</td><td class="tl">Wala akong time.</td></tr>
+        <tr><td class="tl">ayaw</td><td>don't want</td><td class="tl">Gusto ko.</td><td class="tl">Ayoko. / Ayaw ko.</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <p>Notice <span class="tl">Wala akong time</span>: when <span class="tl">wala</span> links to a noun, <span class="tl">ako</span> gets a <span class="tl">-ng</span> glued on. Same with <span class="tl">Gusto kong…</span>. If a word ends in a vowel and links to the next one, add <span class="tl">-ng</span>. Otherwise use <span class="tl">na</span>. That's all the grammar you need for it.</p>
+    </div>
+    <h3>Drill</h3>
+    <div class="drills" data-drills="s4"></div>
+  </section>
+
+  <!-- STEP 5 -->
+  <section data-step="s5" data-label="5 · Questions">
+    <span class="tag">Step 5</span>
+    <h2>Question words</h2>
+    <p>Question word goes first. Then the same flipped order you already know.</p>
+    <div class="card tablewrap">
+      <table>
+        <tr><td class="tl">Ano?</td><td>What?</td><td class="tl">Ano ang ginagawa mo?</td><td>What are you doing?</td></tr>
+        <tr><td class="tl">Saan?</td><td>Where?</td><td class="tl">Saan ka pupunta?</td><td>Where are you going?</td></tr>
+        <tr><td class="tl">Kailan?</td><td>When?</td><td class="tl">Kailan ka babalik?</td><td>When are you coming back?</td></tr>
+        <tr><td class="tl">Sino?</td><td>Who?</td><td class="tl">Sino siya?</td><td>Who is he/she?</td></tr>
+        <tr><td class="tl">Bakit?</td><td>Why?</td><td class="tl">Bakit ka pagod?</td><td>Why are you tired?</td></tr>
+        <tr><td class="tl">Paano?</td><td>How?</td><td class="tl">Paano mag-order?</td><td>How do you order?</td></tr>
+        <tr><td class="tl">Ilan?</td><td>How many?</td><td class="tl">Ilan kayo?</td><td>How many of you?</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <p><b>Taglish shortcut:</b> with an English verb, the mag- shortcut still works after a question word: <span class="tl">Kailan ka magta-travel?</span> When will you travel?</p>
+    </div>
+    <h3>Drill</h3>
+    <div class="drills" data-drills="s5"></div>
+  </section>
+
+  <!-- STEP 6 -->
+  <section data-step="s6" data-label="6 · Your 15">
+    <span class="tag">Step 6 · The one exercise</span>
+    <h2>Your 15 sentences</h2>
+    <p>Write 15 things you actually say on a normal day in English. Rebuild each with a frame from Steps 1–5, keeping English nouns and verbs. Then say all 15 out loud to a Filipino speaker, or record yourself. Saves automatically in this browser.</p>
+    <div class="card" id="fifteen"></div>
+    <div class="row">
+      <button class="btn ghost" id="copy15">Copy all</button>
+      <button class="btn ghost" id="clear15">Clear</button>
+    </div>
+    <p class="lede" id="copied" style="margin-top:8px"></p>
+  </section>
+
+  <div class="navbtns">
+    <button class="btn ghost" id="prev">← Back</button>
+    <button class="btn" id="next">Next →</button>
+  </div>
+
+  <footer>Self-hosted crash course. Progress is stored only in your browser.</footer>
+</div>
+
+<script>
+// ---------- storage (safe) ----------
+const store = {
+  get(k, d){ try{ const v = localStorage.getItem(k); return v===null ? d : JSON.parse(v); }catch(e){ return d; } },
+  set(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+};
+
+// ---------- drills ----------
+// accept: list of acceptable answers (normalized). hint: shown on a miss.
+const DRILLS = {
+  s1: [
+    { q:"I'm happy.", accept:["masaya ako"], show:"Masaya ako.", hint:"Description first, then the person: happy + I." },
+    { q:"Are you ready? (asking an older person politely)", accept:["handa po ba kayo","handa na po ba kayo","handa po ba kayo na","handa ka po ba","handa ka na po ba"], show:"Handa po ba kayo?", hint:"Handa first. Then po, then ba, then the person. Polite 'you' to an elder is kayo.",
+      note:"Handa ka po ba? is understood, but kayo is the respectful 'you' for one older person, so Handa po ba kayo? sounds better. Add na (Handa na po ba kayo?) for 'ready yet'." },
+    { q:"They're busy.", accept:["busy sila"], show:"Busy sila.", hint:"Keep 'busy' in English, then they = sila." },
+    { q:"Are you hungry? (to a friend)", accept:["gutom ka ba","gutom ka"], show:"Gutom ka ba?", hint:"Gutom + you + ba." },
+    { q:"I'm tired, sir. (polite)", accept:["pagod po ako"], show:"Pagod po ako.", hint:"po goes right after the first word." }
+  ],
+  s2: [
+    { q:"I texted.", accept:["nag-text ako","nagtext ako"], show:"Nag-text ako.", hint:"Done = nag- + verb." },
+    { q:"I'm working.", accept:["nagwo-work ako","nagwowork ako","nag-wowork ako","nagwo work ako"], show:"Nagwo-work ako.", hint:"Doing now = nag- + doubled first syllable: wo-work." },
+    { q:"I'll cook later.", accept:["magco-cook ako mamaya","magcocook ako mamaya","magko-cook ako mamaya","magkocook ako mamaya","mamaya magco-cook ako"], show:"Magco-cook ako mamaya.", hint:"Future = mag- + doubled syllable. 'Later' = mamaya." },
+    { q:"She drove yesterday.", accept:["nag-drive siya kahapon","nagdrive siya kahapon","kahapon nag-drive siya"], show:"Nag-drive siya kahapon.", hint:"Past = nag-. Yesterday = kahapon." },
+    { q:"We (including you) will travel tomorrow.", accept:["magta-travel tayo bukas","magtatravel tayo bukas","magta travel tayo bukas","bukas magta-travel tayo"], show:"Magta-travel tayo bukas.", hint:"Future: mag + ta + travel. We incl. you = tayo. Tomorrow = bukas." }
+  ],
+  s3: [
+    { q:"I want coffee.", accept:["gusto ko ng coffee","gusto ko ng kape"], show:"Gusto ko ng coffee.", hint:"Gusto ko ng ___." },
+    { q:"Is there wifi?", accept:["may wifi ba","may wi-fi ba"], show:"May wifi ba?", hint:"May ___ ba?" },
+    { q:"Where is the restroom?", accept:["saan ang cr","saan ang comfort room","saan ang banyo"], show:"Saan ang CR?", hint:"Saan ang ___? Restroom = CR." },
+    { q:"How much is this?", accept:["magkano ito","magkano ito po","magkano po ito","magkano 'to","magkano to"], show:"Magkano ito?", hint:"Magkano + ito (this)." },
+    { q:"Can I order? (polite)", accept:["pwede po bang mag-order","pwede po bang magorder","puwede po bang mag-order","pwede po ba mag-order","pwede po bang umorder"], show:"Pwede po bang mag-order?", hint:"Pwede + po + bang + mag-order." },
+    { q:"Please repeat.", accept:["paki-ulit","pakiulit","paki-ulit po","pakiulit po","paki ulit"], show:"Paki-ulit.", hint:"Paki- + ulit (repeat)." }
+  ],
+  s4: [
+    { q:"I'm not tired.", accept:["hindi ako pagod"], show:"Hindi ako pagod.", hint:"Hindi, then the pronoun jumps forward: hindi + ako + pagod." },
+    { q:"I don't have cash.", accept:["wala akong cash","wala akong pera"], show:"Wala akong cash.", hint:"Wala + ako + ng + thing." },
+    { q:"I don't want to.", accept:["ayoko","ayaw ko","ayoko po","ayaw ko po"], show:"Ayoko.", hint:"Ayaw ko, or shortened: Ayoko." },
+    { q:"There's no wifi.", accept:["walang wifi","wala ang wifi","walang wi-fi","walang wifi dito"], show:"Walang wifi.", hint:"Wala links to the noun with -ng: wala + ng + wifi." },
+    { q:"He's not busy.", accept:["hindi siya busy"], show:"Hindi siya busy.", hint:"Hindi + siya + busy." }
+  ],
+  s5: [
+    { q:"Where are you going?", accept:["saan ka pupunta","saan ka pupunta ngayon"], show:"Saan ka pupunta?", hint:"Saan + ka + pupunta (going)." },
+    { q:"Who is she?", accept:["sino siya"], show:"Sino siya?", hint:"Sino + siya." },
+    { q:"Why are you tired?", accept:["bakit ka pagod"], show:"Bakit ka pagod?", hint:"Question word first; pronoun jumps right after it: Bakit + ka + pagod." },
+    { q:"When will you travel?", accept:["kailan ka magta-travel","kailan ka magtatravel","kailan ka magta travel"], show:"Kailan ka magta-travel?", hint:"Kailan + ka + future mag-shortcut." },
+    { q:"How many of you? (to a group)", accept:["ilan kayo","ilan kayo lahat","ilan po kayo"], show:"Ilan kayo?", hint:"Ilan + kayo." }
+  ]
+};
+
+const norm = s => s.toLowerCase()
+  .replace(/[’']/g,"'")
+  .replace(/[?.!,]/g,"")
+  .replace(/\s+/g," ")
+  .trim();
+
+const answers = store.get("tl_answers", {});
+const solved  = store.get("tl_solved", {});
+
+function speak(text){
+  try{
+    const u = new SpeechSynthesisUtterance(text);
+    const v = speechSynthesis.getVoices().find(v => /^(fil|tl)/i.test(v.lang));
+    if(v) u.voice = v; u.lang = v ? v.lang : "fil-PH"; u.rate = .85;
+    speechSynthesis.cancel(); speechSynthesis.speak(u);
+  }catch(e){}
+}
+
+function buildDrills(){
+  document.querySelectorAll(".drills").forEach(box => {
+    const key = box.dataset.drills;
+    DRILLS[key].forEach((d, i) => {
+      const id = key + "_" + i;
+      const wrap = document.createElement("div");
+      wrap.className = "drill card";
+      wrap.innerHTML = `
+        <label for="${id}">${i+1}. ${d.q}</label>
+        <div class="row">
+          <input type="text" id="${id}" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type it in Tagalog">
+          <button class="btn">Check</button>
+        </div>
+        <div class="fb"></div>`;
+      const input = wrap.querySelector("input"), btn = wrap.querySelector("button"), fb = wrap.querySelector(".fb");
+      input.value = answers[id] || "";
+      let misses = 0;
+      const check = () => {
+        const a = norm(input.value);
+        answers[id] = input.value; store.set("tl_answers", answers);
+        if(!a){ return; }
+        if(d.accept.map(norm).includes(a)){
+          fb.className = "fb ok";
+          fb.innerHTML = `✓ <b>${d.show}</b> <button class="speak" title="Hear it">🔊</button>${d.note ? `<br><small>${d.note}</small>` : ""}`;
+          fb.querySelector(".speak").onclick = () => speak(d.show);
+          solved[id] = true; store.set("tl_solved", solved); markDone();
+        } else {
+          misses++;
+          fb.className = misses >= 2 ? "fb hint" : "fb no";
+          fb.innerHTML = misses >= 2
+            ? `Answer: <b>${d.show}</b> <button class="speak" title="Hear it">🔊</button><br><small>${d.hint}</small>`
+            : `Not quite. ${d.hint}`;
+          const s = fb.querySelector(".speak"); if(s) s.onclick = () => speak(d.show);
+        }
+      };
+      btn.onclick = check;
+      input.addEventListener("keydown", e => { if(e.key === "Enter") check(); });
+      if(solved[id] && input.value) check();
+      box.appendChild(wrap);
+    });
+  });
+}
+
+// ---------- 15 sentences ----------
+function buildFifteen(){
+  const data = store.get("tl_fifteen", Array.from({length:15}, () => ({en:"", tl:""})));
+  const box = document.getElementById("fifteen");
+  box.innerHTML = "";
+  data.forEach((row, i) => {
+    const el = document.createElement("div");
+    el.className = "sentence";
+    el.innerHTML = `<div class="n">${i+1}</div><div class="pair">
+      <textarea rows="1" placeholder="English: what you actually say"></textarea>
+      <textarea rows="1" placeholder="Taglish: your rebuilt version"></textarea></div>`;
+    const [en, tl] = el.querySelectorAll("textarea");
+    en.value = row.en; tl.value = row.tl;
+    en.oninput = () => { data[i].en = en.value; store.set("tl_fifteen", data); };
+    tl.oninput = () => { data[i].tl = tl.value; store.set("tl_fifteen", data); };
+    box.appendChild(el);
+  });
+  document.getElementById("copy15").onclick = async () => {
+    const txt = data.filter(r => r.en || r.tl).map((r,i) => `${i+1}. ${r.en}\n   ${r.tl}`).join("\n");
+    try{ await navigator.clipboard.writeText(txt); document.getElementById("copied").textContent = "Copied."; }
+    catch(e){ document.getElementById("copied").textContent = "Couldn't copy here; select the text manually."; }
+  };
+  document.getElementById("clear15").onclick = () => {
+    if(!confirm("Clear all 15 sentences?")) return;
+    data.forEach(r => { r.en = ""; r.tl = ""; }); store.set("tl_fifteen", data); buildFifteen();
+  };
+}
+
+// ---------- navigation ----------
+const sections = [...document.querySelectorAll("section")];
+const nav = document.getElementById("nav");
+let cur = Math.min(store.get("tl_step", 0), sections.length - 1);
+
+function markDone(){
+  [...nav.children].forEach((b, i) => {
+    const key = sections[i].dataset.step;
+    const list = DRILLS[key];
+    b.classList.toggle("done", !!list && list.every((_, j) => solved[key + "_" + j]));
+  });
+}
+function show(i){
+  cur = i; store.set("tl_step", i);
+  sections.forEach((s, j) => s.classList.toggle("on", j === i));
+  [...nav.children].forEach((b, j) => b.classList.toggle("on", j === i));
+  document.getElementById("prev").style.visibility = i === 0 ? "hidden" : "visible";
+  document.getElementById("next").style.visibility = i === sections.length - 1 ? "hidden" : "visible";
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+sections.forEach((s, i) => {
+  const b = document.createElement("button");
+  b.textContent = s.dataset.label; b.onclick = () => show(i);
+  nav.appendChild(b);
+});
+document.getElementById("prev").onclick = () => show(Math.max(0, cur - 1));
+document.getElementById("next").onclick = () => show(Math.min(sections.length - 1, cur + 1));
+
+buildDrills(); buildFifteen(); markDone(); show(cur);
+</script>
+</body>
+</html>
